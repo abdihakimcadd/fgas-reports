@@ -16,16 +16,27 @@ def extract_fields(transcript_text):
     Transcript: "{transcript_text}"
     
     Keys:
-    - cliente, indirizzo, tipo_impianto, marchio, modello, matricola, 
-    - tipo_gas, quantita_gas_kg, tipo_intervento, esito, data_intervento, tecnico
+    - cliente
+    - indirizzo
+    - tipo_impianto
+    - marchio
+    - modello
+    - matricola
+    - tipo_gas
+    - quantita_gas_kg
+    - tipo_intervento
+    - esito
+    - data_intervento
+    - tecnico
     """
     
     chat_completion = client.chat.completions.create(
-        model="llama-3.3-70b-versatile",
+        model="llama3-70b-8192",  # <--- CHANGED TO WORK ON ALL GROQ ACCOUNTS
         response_format={"type": "json_object"},
         messages=[
             {"role": "system", "content": "You are a helpful HVAC compliance assistant that only outputs JSON."},
             {"role": "user", "content": extraction_prompt}
         ]
     )
+    
     return json.loads(chat_completion.choices[0].message.content)
