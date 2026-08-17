@@ -31,7 +31,7 @@ def extract_fields(transcript_text):
     """
     
     chat_completion = client.chat.completions.create(
-        model="llama-3.3-70b-versatile",  # <--- CHANGED TO GROQ'S NEWEST MODEL
+        model="llama-3.1-8b-instant",  # <--- CHANGED TO UNIVERSAL INSTANT MODEL
         response_format={"type": "json_object"},
         messages=[
             {"role": "system", "content": "You are a helpful HVAC compliance assistant that only outputs JSON."},
