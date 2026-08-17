@@ -31,7 +31,7 @@ def extract_fields(transcript_text):
     """
     
     chat_completion = client.chat.completions.create(
-        model="qwen-2.5-32b",  # <--- CHANGED TO GROQ'S QWEN MODEL
+        model="qwen/qwen3.6-27b",  # <--- CHANGED TO YOUR AVAILABLE QWEN MODEL
         response_format={"type": "json_object"},
         messages=[
             {"role": "system", "content": "You are a helpful HVAC compliance assistant that only outputs JSON."},
